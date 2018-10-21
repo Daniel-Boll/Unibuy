@@ -2,7 +2,8 @@ var datalist = document.getElementById('produtosDatalist');
 console.log('a');
 var cod_solicitacao;
 var inputList = document.getElementById('produtos');
-
+var idItem = 0;
+var idProdutos =[];
 
 firebase.database().ref('/cod_solicitacao').on('value', function(snapshot){
     snapshot.forEach(function (item){
@@ -27,14 +28,16 @@ firebase.database().ref('/produto').on('value', function(snapshot){
 // });
 // });
 
- getProductId = function(){
-  list = inputList.getAttribute('list');
-  var options = document.querySelectorAll('#' + list + ' option');
-  for(var option of options){
-    if(option.getAttribute('value')==inputList.value){
-      return option.childNodes[0].nodeValue;
+ getProductId = function(list){
+  var options = document.querySelectorAll('#' + inputList.getAttribute('list') + ' option');
+  console.log(list.parentNode);
+  for(var option of options){   
+    if(option.getAttribute('value')==list.value){
+      idProdutos.push(option.childNodes[0].nodeValue);
     }
   }
+  console.log(idProdutos)
+  return
 }
 
 
@@ -73,13 +76,16 @@ var excludeItem = function(id){
   console.log(button.parentNode);
   var li = button.parentNode;
   itemList.removeChild(li);
+  idItem -=1;
 }
 
-var idItem = 0;
 var addItem = function(){
   console.log('fui chamado');
   var itm = itemList.lastChild;
   var cln = itm.cloneNode(true);
+  var div = cln.childNodes[1];
+  console.log(div)
+  div.childNodes[3].setAttribute('id','')
 
   if(cln.lastChild.tagName!='BUTTON'){
     var button = document.createElement('button');
@@ -103,22 +109,29 @@ var addItem = function(){
 }
 
 function solicitar(){
-    var id = getProductId();
     var solicitante = 1;
-    var prazo = document.getElementById('prazo1').value;
-    var quantidade = document.getElementById("quantidade").value;
     var observacao = document.getElementById("observacao").value;
     console.log(id);
-    inserir(id, solicitante, prazo, quantidade, observacao);
-    window.location.replace("./solicitacao.html");
+    
+    var quantidades = (document.querySelectorAll('#quantidade'));
+    var prazos = (document.querySelectorAll('#prazo'));
+    console.log(prazos[0].value);
+    inserir(solicitante, observacao);
+    for(var i =0; i <= idItem; i++){
+        var id = idProdutos[i];
+        var prazo = prazos[i].value;
+        var quantidade = quantidades[i].value;
+        console.log("prazo "+prazo);
+        console.log("quantidade "+quantidade);
+        var aux = i +1;
+        inserirprod(aux, id, quantidade, prazo);
+    }
+    //window.location.replace("./solicitacao.html");
 }
 
-function inserir(id, solicitante, prazo, quantidade, observacao){
+function inserir(solicitante, observacao){
     dados = {
-        idproduto: id,
         pessoa_solicitante: solicitante,
-        quantidade: quantidade,
-        prazo: prazo,
         setor: 1,
         observacao: observacao
     };
@@ -127,4 +140,14 @@ function inserir(id, solicitante, prazo, quantidade, observacao){
     };
     firebase.database().ref("/cod_solicitacao").set(jooj);
     return firebase.database().ref("/solicitacao/"+cod_solicitacao).set(dados);
+}
+
+function inserirprod(i ,id, quantidade, prazo){
+    produtos = {
+        idproduto: id,
+        quantidade: quantidade,
+        prazo: prazo,
+    }
+    firebase.database().ref("solicitacao/"+cod_solicitacao+"/produtos/"+i).set(produtos);
+
 }

@@ -64,7 +64,7 @@
           </li>
           <li id='item'>
             <div style="display:inline-block; padding-left: 0px" class="col-md-6">
-              <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required=" ">
+              <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId(this);" required=" ">
               <datalist id='produtosDatalist' >
               </datalist>
             </div>
@@ -72,7 +72,7 @@
               <input id="quantidade" type="number" class="form-control" required=" ">
             </div>
             <div style="display:inline-block" class="col-md-3">
-              <input id="prazo1" type="date" class="form-control" onchange="checkLimit(value, id)" required=" ">
+              <input id="prazo" type="date" class="form-control" onchange="checkLimit(value, id)" required=" ">
             </div>
           </div>
           <div class="col-md-11" style="padding-left: 0px">
