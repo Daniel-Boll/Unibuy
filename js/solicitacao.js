@@ -116,7 +116,6 @@ function inserir(id, solicitante, prazo, quantidade, observacao){
         prazo: prazo,
         setor: 1,
         observacao: observacao
-
     };
     jooj = {
         cod_solicitacao: cod_solicitacao
