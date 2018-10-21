@@ -49,7 +49,7 @@ function solicitar(){
 };
 function inserir(id, solicitante, prazo, quantidade, observacao){
     dados = {
-        id: id,
+        idproduto: id,
         pessoa_solicitante: solicitante,
         quantidade: quantidade,
         prazo: prazo,
