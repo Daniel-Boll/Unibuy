@@ -31,25 +31,24 @@
   <a href="solicitacao.html">Solicitar pedido</a>
   <a href="acompanhar.html">Acompanhar pedido</a>
   <a href="cadastro.html">Cadastro de produtos</a>
-  <a href="ocorrencia.html">Ocorrências</a>
   <a href="cotacao.html">Cotações</a>
 </div>
 <!-- Normal content  -->
-<div class="" style="padding: 20px 0px 0px 260px;display: flex; position: inline-block">
+<div class="" style="padding: 20px 0px 0px 260px">
   <!-- Código -->
   <div class="">
-    <label>Código</label><br>
-    <input type="text" class="form-control" placeholder="Cod." readonly>
+    <label>Código</label>
+    <input type="text" class="col-lg-2 form-control" placeholder="Cod." readonly>
   </div>
   <!-- Descrição -->
   <div class="">
-    <label>Descrição</label><br>
-    <input type="text" class="form-control" placeholder="Descrição">
+    <label>Descrição</label>
+    <input type="text" class="col-lg-2 form-control" placeholder="Descrição">
   </div>
   <!-- Unidade de Medida -->
   <div class="">
     <label>Unidade de Medida</label>
-    <input id='UM' list="UMDatalist" class="form-control">
+    <input id='UM' list="UMDatalist" class="col-lg-2 form-control">
     <datalist id='produtosDatalist'>
     </datalist>
   </div>
@@ -57,22 +56,16 @@
   <!-- Grupo -->
   <div class="">
     <label>Grupo</label><br>
-    <input id='DOIS' list="DOISDatalist" class="form-control">
+    <input id='DOIS' list="DOISDatalist" class="col-lg-2 form-control">
     <datalist id='gruposDatalist'>
     </datalist>
   </div>
 
   <!-- Grupo -->
-  <div class="">
-    <label>Cont.</label><br>
-    <input id='TRES' list="TRESDatalist" class="form-control">
-    <datalist id='contDatalist'>
-    </datalist>
-  </div>
 
   <!-- Salvar Cadastro -->
   <br>
-  <button type="button" name="button" placeholder="SalvarCadastro" style="padding-right: : 50%" > Salvar Cadastro! </button>
+  <button type="button" class="btn btn-success" placeholder="SalvarCadastro" style="padding-right: : 50%" > Salvar Cadastro! </button>
 </div>
 
 </body>
