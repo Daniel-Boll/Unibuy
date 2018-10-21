@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="../CSS/sidebar.css">
+
+  <script type="text/javascript">
+  function enviar(){
+    let NPedido = document.getElementById('NPedido').value;
+    let Data = document.getElementById('Data').value;
+    let Prazo = document.getElementById('Prazo').value;
+    let AbertoPor = document.getElementById('AbertoPor').value;
+    let v_total = document.getElementById('v_total').value;
+
+    location.href="cotacao.html"
+    console.log(v_total);
+  }
+  </script>
 </head>
 <body>
 
@@ -32,7 +45,6 @@
   <a href="solicitacao.html">Solicitar pedido</a>
   <a href="acompanhar.html">Acompanhar pedido</a>
   <a href="cadastro.html">Cadastro de produtos</a>
-  <a href="ocorrencia.html">Ocorrências</a>
   <a href="cotacao.html">Cotações</a>
 </div>
 
@@ -47,13 +59,13 @@
       <fieldset disabled>
         <div class="form-group">
           <label for="disabledSelect">Número Pedido</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
+          <input class="form-control" id="NPedido" type="text" value="1" disabled>
           <label for="disabledSelect">Data</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
+          <input class="form-control" id="Data" type="text" value="21/10/2018" disabled>
           <label for="disabledSelect">Prazo</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
+          <input class="form-control" id="Prazo" type="text" value="28/10/2018" disabled>
           <label for="disabledSelect">Aberto Por</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
+          <input class="form-control" id="AbertoPor" type="text" value="User ID" disabled>
         </fieldset>
         <br>
         <div class="" style="display: flex; position: inline-block">
@@ -87,24 +99,18 @@
         </div>
       </div>
       <br>
-      <br>
-      <footer>
-      </footer>
-
       <div class="col-lg-6" style="left: 1%">
         <div class="form-group">
-          <label for="disabledSelect">Área Responsável</label>
-          <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
           <label for="disabledSelect">Anexo</label>
           <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
-
-
         </div>
         <div class="form-group">
           <label>File input</label>
           <input type="file">
         </div>
-
+        <div class="">
+          <button type="button" class="btn btn-success" onclick="enviar();">Enviar</button>
+        </div>
       </div>
     </div>
   </body>
