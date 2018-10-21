@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>another page</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-light bg-light" style="background-color: #32F288">
+    <img src="../../Images/unimed_cascavel.png" alt="">
+    <a class="navbar-brand" style="font-size=80px;">UNIBUY</a>
+    <form class="form-inline">
+      <p>User ID</p>
+    </form>
+  </nav>
+
+  <!-- Side bar -->
+  <div class="w3-sidebar w3-light-grey w3-bar-block w3-align-middle" style="margin-right: 1px">
+    <a style="text-align: center;" href="solicitacao.html" class="w3-bar-item w3-button">Solicitar pedido</a>
+    <a style="text-align: center;" href="acompanhar.html" class="w3-bar-item w3-button">Acompanhar pedidos</a>
+    <a style="text-align: center;" href="cadastro.html" class="w3-bar-item w3-button">Cadastro de produtos</a>
+    <a style="text-align: center;" href="ocorrencia.html" class="w3-bar-item w3-button">Ocorrência</a>
+
+  </div>
+
+
+  <!-- Normal content  -->
+  <div id="page-wrapper" class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Chamados</h1>
+        <select class="" name="Setor" style="margin:1%" style="padding-right:1%" onchange="location = this.value;" >
+          <option value=""> Setor</option>
+          <option value=""> Geral</option>
+          <option value="logo.png">Suplimento</option>
+          <option value=""> TI</option>
+          <option value=""> Juridico</option>
+          <option value=""> Farmácia</option>
+
+
+        </select>
+
+        <button type="button" name="button" placeholder="Novo" style="padding-right: : 50%" > Novo </button>
+        <button type="button" name="button" placeholder="Aberto" style="padding-right: : 30%"> Aberto </button>
+        <button type="button" name="button" placeholder="Curso" style="padding-right: : 30%"> Curso </button>
+        <button type="button" name="button" placeholder="Fechado" style="padding-right: : 30%"> Fechado </button>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Chamados
+          </div>
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <thead>
+                <tr>
+                  <th>N°Pedido</th>
+                  <th>Descrição</th>
+                  <th>Data</th>
+                  <th>Prazo de entrega</th>
+                  <th>Colaborador</th>
+                  <th>Nome</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd gradeX">
+                  <td>1</td>
+                  <td>Caneta</td>
+                  <td>12/05/2018</td>
+                  <td>23/08/2018</td>
+                  <td >Marcos</td>
+                  <td >Cristiane</td>
+                </tr>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+    </body>
+    </html>
+
