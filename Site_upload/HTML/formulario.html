@@ -35,23 +35,17 @@
   <a href="ocorrencia.html">Ocorrências</a>
 </div>
 
-
-
 <!-- Normal content  -->
 <div class="" style="margin-left: 250px;">
-
   <div>
-
-    <h1 style="width:33%">Ocorrência</h1>
-
-
+    <h1 style="width:33%">Orçamento - (Nome Fornecedor)</h1>
   </div>
   <div class="col-lg-6" style="left: 1%">
 
     <form role="form" action="">
       <fieldset disabled>
         <div class="form-group">
-          <label for="disabledSelect">Numero Pedido</label>
+          <label for="disabledSelect">Número Pedido</label>
           <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
           <label for="disabledSelect">Data</label>
           <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
@@ -60,56 +54,39 @@
           <label for="disabledSelect">Aberto Por</label>
           <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
         </fieldset>
-        <label for="disabledSelect">Descrição</label>
-        <input class="form-control" id="disabledInput" type="text" placeholder="dado BD"  style="padding:10%">
-
-
-        <div class="form-group">
-          
-        </div>
-
-
-        <div class="form-group">
-          <label>Fornecedores</label>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 1
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 2
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 3
-            </label>
-          </div>
-        </div>
-
         <br>
-        <div class="form-group">
-          <label>Gerentes</label>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Gerente
-            </label>
+        <div class="" style="display: flex; position: inline-block">
+          <!-- Valor -->
+          <div class="">
+            <label>Valor do produto</label><br>
+            <input id="v_produto" class="form-control" placeholder="R$:00.00">
           </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Superintendente
-            </label>
+          <!-- Valor do frete -->
+          <div class="">
+            <label>Valor do frete</label><br>
+            <input id="v_frete" class="form-control" placeholder="R$:00.00">
           </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Diretor
-            </label>
+          <!-- Unidade de Medida -->
+          <div class="">
+            <label>Calcular</label><br>
+            <button type="button" class="form-control" onclick="Calc();">Calcular</button>
           </div>
         </div>
-
-        <button type="button" name="button" onclick="funcao()">Enviar</button>
+        <br>
+        <script type="text/javascript">
+          function Calc(){
+            let v_produto = parseFloat(document.getElementById("v_produto").value);
+            let v_frete = parseFloat(document.getElementById("v_frete").value);
+            let v_total = v_produto + v_frete;
+            document.getElementById('v_total').value = v_total;
+          }
+        </script>
+        <div class="">
+          <input id="v_total" class="form-control" placeholder="Valor Total" readonly>
+        </div>
       </div>
+      <br>
+      <br>
       <footer>
       </footer>
 
@@ -126,6 +103,7 @@
           <label>File input</label>
           <input type="file">
         </div>
+
       </div>
     </div>
   </body>
