@@ -1,7 +1,15 @@
 var datalist = document.getElementById('produtosDatalist')
 console.log('a');
-cod_solicitacao = "2";
+var cod_solicitacao;
 var inputList = document.getElementById('produtos');
+
+firebase.database().ref('/cod_solicitacao').on('value', function(snapshot){
+    snapshot.forEach(function (item){
+        console.log(item.val());
+        cod_solicitacao = item.val() + 1;
+
+    });
+});
 
 firebase.database().ref('/produto').on('value', function(snapshot){
     datalist.innerHTML = '';
@@ -32,8 +40,7 @@ firebase.database().ref('/produto').on('value', function(snapshot){
 
 function solicitar(){
     var id = getProductId();
-    var solicitante = 1;
-
+    var solicitante = 1; 
     var prazo = document.getElementById("prazo").value;
     var quantidade = document.getElementById("quantidade").value;
     var observacao = document.getElementById("obs").value;
@@ -50,6 +57,10 @@ function inserir(id, solicitante, prazo, quantidade, observacao){
         observacao: observacao
 
     }
+    jooj = {
+        cod_solicitacao: cod_solicitacao
+    }
+    firebase.database().ref("/cod_solicitacao").set(jooj);
     return firebase.database().ref("/solicitacao/"+cod_solicitacao).set(dados);
 
 }
