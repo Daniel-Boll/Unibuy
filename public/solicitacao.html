@@ -49,7 +49,7 @@
     <h1 align="justify">Solicitar Pedido</h1>
 
     <form id="requisicao" name="requisicao" action="#">
-      <div class="col-md-12">
+      <div class="col-md-12" style="padding-left: 0px">
         <ul class="ul" id='itemList'>
           <li>
             <div style="display:inline-block" class="col-md-6">
@@ -63,7 +63,7 @@
             </div>
           </li>
           <li id='item'>
-            <div style="display:inline-block" class="col-md-6">
+            <div style="display:inline-block; padding-left: 0px" class="col-md-6">
               <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required>
               <datalist id='produtosDatalist' >
               </datalist>
@@ -75,7 +75,7 @@
               <input id="prazo1" type="date" class="form-control" onchange="checkLimit(value, id)" required>
             </div>
           </div>
-          <div class="col-md-11">
+          <div class="col-md-11" style="padding-left: 0px">
             <button class="btn btn-sm" form='none' style="width:inherit;height:inherit" name="button" onclick="addItem();">Adicionar Item</button>
           </div>
         </li>
