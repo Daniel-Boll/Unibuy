@@ -51,13 +51,17 @@ var checkLimit = function(prazo, id){
   var li = inputItem.parentNode.parentNode;
   var observacao = document.getElementById('observacao');
   if(d1.getTime() <  date.addDays(7)){
-    observacao.setAttribute('required','');
-    var div = document.createElement('div');
-    div.appendChild(document.createTextNode('Prazo fora do limite mínimo. Justifique.'));
-    div.setAttribute('class','col-md-11 bg-danger');
-    li.appendChild(div);
+    observacao.setAttribute('required', ' ');
+    if(li.lastChild.tagName!='DIV'){
+
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode('Prazo fora do limite mínimo. Justifique.'));
+      div.setAttribute('class','col-md-11 bg-danger');
+      li.appendChild(div);
+    }
   }else {
-    if(item.lastChild.tagName=='DIV'){
+    console.log(li.lastChild);
+    if(li.lastChild.tagName=='DIV'){
       li.removeChild(li.lastChild);
       observacao.removeAttribute('required');
     }
@@ -105,7 +109,8 @@ function solicitar(){
     var quantidade = document.getElementById("quantidade").value;
     var observacao = document.getElementById("observacao").value;
     console.log(id);
-    inserir(id, solicitante, prazo, quantidade, observacao)
+    inserir(id, solicitante, prazo, quantidade, observacao);
+    window.location.replace("./solicitacao.html");
 }
 
 function inserir(id, solicitante, prazo, quantidade, observacao){

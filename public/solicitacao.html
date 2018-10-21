@@ -35,7 +35,7 @@
 </nav>
 
 
-<div id="mysidenavxD" style="width: 30vh; marginLeft: 25vh; diplay:inline-block;" class="sidenavxD">
+<div id="mysidenavxD" style="display: inline-block;width: 21%;height: -webkit-fill-available;position: absolute;margin-top: 2%;display:inline-block" class="sidenavxD">
   <a href="solicitacao.html">Solicitar pedido</a>
   <a href="acompanhar.html">Acompanhar pedido</a>
   <a href="cadastro.html">Cadastro de produtos</a>
@@ -44,7 +44,7 @@
 
   <!-- Normal content  -->
   <!-- Normal content  -->
-  <div class="container" style="position: relative; left:10%;">
+  <div class="container" style="position: absolute;margin-left: 22%;margin-top: 2%;">
 
     <h1 align="justify">Solicitar Pedido</h1>
 
@@ -64,15 +64,15 @@
           </li>
           <li id='item'>
             <div style="display:inline-block; padding-left: 0px" class="col-md-6">
-              <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required>
+              <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required=" ">
               <datalist id='produtosDatalist' >
               </datalist>
             </div>
             <div style="display:inline-block" class="col-md-2">
-              <input id="quantidade" type="number" class="form-control" required>
+              <input id="quantidade" type="number" class="form-control" required=" ">
             </div>
             <div style="display:inline-block" class="col-md-3">
-              <input id="prazo1" type="date" class="form-control" onchange="checkLimit(value, id)" required>
+              <input id="prazo1" type="date" class="form-control" onchange="checkLimit(value, id)" required=" ">
             </div>
           </div>
           <div class="col-md-11" style="padding-left: 0px">
@@ -81,7 +81,7 @@
         </li>
         <li>
           <br>Observação: <br><input id="observacao" type="text" class="col-md-8" name="Descricao" style="height: 12vh;"><br><br>
-          <input value='Solicitar' form="requisicao" class="btn" type="button" name="button" onclick="solicitar()"></button>
+          <input value='Solicitar' form="requisicao" class="btn" type="button" name="button" onclick="solicitar()">
         </li>
       </ul>
     </div>
@@ -98,8 +98,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-functions.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../js/app.js">  </script>
-
+    <script src="../js/app.js"></script>
     <script src="../js/solicitacao.js"></script>
 
   </body>
