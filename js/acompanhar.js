@@ -18,18 +18,18 @@ function getUser () {
   );
 }
 
-console.log(solicitacaoSnapShot);
-
 getUser().then(result=>{
     solicitacaoSnapShot.forEach(function (item){
+      console.log();
       getNome(item.val().pessoa_solicitante).then(result1=>{
         getSetor(item.val().setor, nome).then(descricao=>
             {
+              idSolicitacao = item.key;
               nome = result1;
               quantidade = item.val().quantidade;
               prazo = item.val().prazo;
               pessoa_solicitante = item.val().pessoa_solicitante;
-              post(descricao, nome, quantidade, prazo)
+              post(idSolicitacao, descricao, nome, quantidade, prazo);
             }
         );
       });
@@ -93,9 +93,11 @@ function getSetor(setor, nome) {
 // }
 //
 
-function post(setor, nome, quantidade, prazo){
+function post(idSolicitacao, setor, nome, quantidade, prazo){
+    var link = document.createElement("a");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
+    console.log(setor);
     setor = document.createTextNode(setor);
     td.appendChild(setor);
     tr.appendChild(td);
@@ -117,11 +119,41 @@ function post(setor, nome, quantidade, prazo){
     nome = document.createTextNode(nome);
     td.appendChild(nome);
     tr.appendChild(td);
+    var div = document.createElement('div');
+    div.setAttribute('id','solicitacao-'+idSolicitacao)
+    tr.appendChild(div);
+    tr.setAttribute('onclick','solicitacaoDetalhada(this)');
     table.appendChild(tr);
 
-    firebase.database().ref("/solicitacao/ta").set("qweqwe");
-
 };
+
+function loadSolicitacao(id){
+  return new Promise((resolve, reject)=>
+    {
+      database.ref('/solicitacao').child(id).once('value')
+      .then(function(snapshot){
+          resolve(snapshot);
+        })
+      });
+      }
+
+function solicitacaoDetalhada(tr){
+  var div = tr.lastChild;
+  loadSolicitacao(div.getAttribute('id').split('-')[1]).then(snapshot =>{
+    var data = [];
+    data.push(snapshot.val());
+    console.log(tr.childNodes);
+    data.push({
+      setor: tr.childNodes[0].innerHTML,
+      solicitante: tr.childNodes[3].innerHTML
+    });
+    sessionStorage.setItem("solicitacao", JSON.stringify(data));
+    window.location.replace("./ocorrencia.html");
+
+  })
+
+}
+
 //
 //
 //             // td.push(document.createElement("td").appendChild(nome));
