@@ -1,0 +1,27 @@
+body{
+  margin:0;
+  padding-top: 5%;
+  font-family: "Lato", sans-serif;
+  transition: background-color .5s;
+}
+
+.sidenavxD {
+  margin-top: 5vh;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 0;
+  top: 6%;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenavxD a{
+  padding: 1vh 1vh 1vh 3vh;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+}
