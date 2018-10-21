@@ -5,69 +5,116 @@ var descricao;
 var quantidade;
 var prazo;
 
+var database = firebase.database()
+var solicitacaoSnapShot = "";
+function getUser () {
+    return new Promise((resolve, reject)=>
+    {
+      database.ref('/solicitacao').once("value").then(function(snapshot){
+        solicitacaoSnapShot = snapshot;
+        resolve();
+      })
+    }
+  );
+}
 
+console.log(solicitacaoSnapShot);
 
-firebase.database().ref('/solicitacao').once('value')
-.then (function(snapshot){
-    snapshot.forEach(function (item){
-        quantidade = item.val().quantidade;
-        prazo = item.val().prazo;
-        pessoa_solicitante = item.val().pessoa_solicitante;
-        getnome(item.val().pessoa_solicitante);
-    });
+getUser().then(result=>{
+    solicitacaoSnapShot.forEach(function (item){
+      getNome(item.val().pessoa_solicitante).then(result1=>{
+        getSetor(item.val().setor, nome).then(descricao=>
+            {
+              nome = result1;
+              quantidade = item.val().quantidade;
+              prazo = item.val().prazo;
+              pessoa_solicitante = item.val().pessoa_solicitante;
+              post(descricao, nome, quantidade, prazo)
+            }
+        );
+      });
+  })
 });
-            
-function getnome(ps){
-    firebase.database().ref('/pessoa').on('value', function(snapshot){
+var ps;
+function getNome(ps){
+  return new Promise((resolve, reject)=>
+    {
+
+      database.ref('/pessoa').once('value')
+      .then(function(snapshot){
         snapshot.forEach(function (item){
             if(item.val().id == ps){
-                console.log(item.val().nome);
-                console.log(item.val().login);
+                // console.log(item.val().nome);
+                // console.log(item.val().login);
                 nome = item.val().nome;
-                getsetor(item.val().setor, nome);
-            }        
-        });
-    });   
-}
+                // console.log(nome);
 
-function getsetor(setor, nome){
-    firebase.database().ref('/setor').on('value', function(snapshot){
-        snapshot.forEach(function (item){
-            if(item.val().id == setor){
-                console.log(item.val().id);
-                descricao = item.val().descricao;
-                post(descricao, nome, quantidade, prazo)
+
+                resolve(nome);
 
             }
-        
         });
-    });   
-
+      });
+    });
+  }
+function getSetor(setor, nome) {
+  console.log(nome);
+  return new Promise((resolve, reject)=>
+    {
+      database.ref('/setor').once('value')
+      .then(function(snapshot){
+        snapshot.forEach(function (item){
+            if(item.val().id == setor){
+              descricao = item.val().descricao;
+              console.log(item.val());
+            }
+        });
+        resolve(descricao);
+      });
+    });
 }
+
+
+//
+
+//
+// function getsetor(setor, nome){
+//     firebase.database().ref('/setor').on('value', function(snapshot){
+//         snapshot.forEach(function (item){
+//             if(item.val().id == setor){
+//                 console.log(item.val().id);
+//                 descricao = item.val().descricao;
+//                 post(descricao, nome, quantidade, prazo)
+////             }
+//
+//         });
+//     });
+//
+// }
+//
 
 function post(setor, nome, quantidade, prazo){
     var tr = document.createElement("tr");
-
     var td = document.createElement("td");
-    var setor = document.createTextNode(setor);
+    setor = document.createTextNode(setor);
     td.appendChild(setor);
     tr.appendChild(td);
     table.appendChild(tr);
 
     var td = document.createElement("td");
-    var prazo = document.createTextNode(prazo);  
+    prazo = document.createTextNode(prazo);
     td.appendChild(prazo);
     tr.appendChild(td);
     table.appendChild(tr);
 
     var td = document.createElement("td");
-    var quantidade = document.createTextNode(quantidade);
-    td.appendChild(quantidade);
+    var exemplo = document.createTextNode('exemplo');
+    td.appendChild(exemplo);
     tr.appendChild(td);
     table.appendChild(tr);
-    
+
     var td = document.createElement("td");
-    var nome = document.createTextNode(nome);
+    nome = document.createTextNode(nome);
     td.appendChild(nome);
     tr.appendChild(td);
     table.appendChild(tr);
@@ -75,15 +122,12 @@ function post(setor, nome, quantidade, prazo){
     firebase.database().ref("/solicitacao/ta").set("qweqwe");
 
 };
-
-
-            // td.push(document.createElement("td").appendChild(nome));
-            // td.push(document.createElement("td").appendChild(document.createTextNode(item.val().solicitante)));
-            // td.push(document.createElement("td").appendChild(document.createTextNode(item.val().prazo)));
-            //console.log(td);
-            // for(var i of td){
-            //     tr.appendChild(i);
-            // }
-
-
-
+//
+//
+//             // td.push(document.createElement("td").appendChild(nome));
+//             // td.push(document.createElement("td").appendChild(document.createTextNode(item.val().solicitante)));
+//             // td.push(document.createElement("td").appendChild(document.createTextNode(item.val().prazo)));
+//             //console.log(td);
+//             // for(var i of td){
+//             //     tr.appendChild(i);
+//             // }
