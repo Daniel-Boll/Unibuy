@@ -35,26 +35,26 @@
         <ul class="ul">
           <li>
             <div >
-              <label >Produto</label>  
-              <input list="produtos" class="form-control">
-              <datalist id='produtos' >
+              <label >Produto</label>
+              <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required>
+              <datalist id='produtosDatalist' >
               </datalist>
             </div>
 
             <div>
               <label>Quantidade</label>
-              <input id="quantidade" type="number" class="form-control">
+              <input id="quantidade" type="number" class="form-control" required>
             </div>
 
             <div >
               <label>Prazo</label>
-              
-              <input id="prazo" type="date" class="form-control">
+
+              <input id="prazo" type="date" class="form-control" required>
             </div>
 
           </div>
 
-          <br>Descrição: <br><input id="obs" type="text" class="col-md-8" name="Descricao" style="height: 120px;"><br><br>
+          <br>Descrição: <br><input id="obs" type="text" class="col-md-8" n ame="Descricao" style="height: 120px;"><br><br>
           <button class="btn" type="button" name="button" onclick="solicitar();">Solicitar</button>
         </li>
       </ul>
@@ -62,7 +62,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
-  
+
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
@@ -70,9 +70,8 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-functions.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/app.js">  </script>
-    
-    <script src="js/solicitacao.js"></script>
+    <script src="../js/app.js">  </script>
+
+    <script src="../js/solicitacao.js"></script>
   </body>
   </html>
-
