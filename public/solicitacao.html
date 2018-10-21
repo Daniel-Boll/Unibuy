@@ -12,17 +12,23 @@
 <body>
 
   <!-- Header -->
-  <nav class="navbar navbar-light bg-light navbar-fixed-top" style="min-height: 2vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  border-bottom: 0.1vh solid #ccc;
-  background: #ECECEC;
-  background-color: #111;
-  z-index: 2;">
-  <img src="../Images/unimed_cascavel.png" alt="">
-  <a class="navbar-brand" style="font-size=80vh;">UNIBUY</a>
+  <div class="" style="display:inline-block">
+    <nav class="navbar navbar-light bg-light navbar-fixed-top" style="
+    min-height: 2vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 0.1vh solid #ccc;
+    background: #ECECEC;
+    background-color: #111;
+    z-index: 2;
+    ">
+    <img src="../Images/unimed_cascavel.png" alt="">
+    <a class="navbar-brand" style="font-size:5vh;">UNIBUY</a>
+
+  </div>
+
   <form class="form-inline">
     <p>User ID</p>
   </form>
@@ -41,36 +47,46 @@
   <div class="container" style="position: relative; left:10%;">
 
     <h1 align="justify">Solicitar Pedido</h1>
-    <form name="enviar">
 
-      <div class="col-md-8">
-        <ul class="ul">
+    <form id="requisicao" name="requisicao" action="#">
+      <div class="col-md-12">
+        <ul class="ul" id='itemList'>
           <li>
-            <div >
+            <div style="display:inline-block" class="col-md-6">
               <label >Produto</label>
+            </div>
+            <div style="display:inline-block" class="col-md-2">
+              <label>Quantidade</label>
+            </div>
+            <div style="display:inline-block" class="col-md-3">
+              <label>Prazo</label>
+            </div>
+          </li>
+          <li id='item'>
+            <div style="display:inline-block" class="col-md-6">
               <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required>
               <datalist id='produtosDatalist' >
               </datalist>
             </div>
-
-            <div>
-              <label>Quantidade</label>
+            <div style="display:inline-block" class="col-md-2">
               <input id="quantidade" type="number" class="form-control" required>
             </div>
-
-            <div >
-              <label>Prazo</label>
-
-              <input id="prazo" type="date" class="form-control" required>
+            <div style="display:inline-block" class="col-md-3">
+              <input id="prazo1" type="date" class="form-control" onchange="checkLimit(value, id)" required>
             </div>
-
           </div>
-
-          <br>Descrição: <br><input id="obs" type="text" class="col-md-8" n ame="Descricao" style="height: 12vh;"><br><br>
-          <button class="btn" type="button" name="button" onclick="solicitar();">Solicitar</button>
+          <div class="col-md-11">
+            <button class="btn btn-sm" form='none' style="width:inherit;height:inherit" name="button" onclick="addItem();">Adicionar Item</button>
+          </div>
+        </li>
+        <li>
+          <br>Observação: <br><input id="observacao" type="text" class="col-md-8" name="Descricao" style="height: 12vh;"><br><br>
+          <input value='Solicitar' form="requisicao" class="btn" type="button" name="button" onclick="solicitar()"></button>
         </li>
       </ul>
     </div>
+
+  </form>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
