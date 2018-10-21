@@ -24,17 +24,56 @@
   <form class="form-inline">
     <p>User ID</p>
   </form>
-  </nav>
+</nav>
 
 
-  <div id="mysidenavxD" style="width: 250px; marginLeft: 250px;" class="sidenavxD">
+<div id="mysidenavxD" style="width: 250px; marginLeft: 250px;" class="sidenavxD">
   <a href="solicitacao.html">Solicitar pedido</a>
   <a href="acompanhar.html">Acompanhar pedido</a>
   <a href="cadastro.html">Cadastro de produtos</a>
   <a href="ocorrencia.html">Ocorrências</a>
+</div>
+
+<!-- Normal content  -->
+<div class="" style="padding: 20px 0px 0px 260px;display: flex; position: inline-block">
+  <!-- Código -->
+  <div class="">
+    <label>Código</label><br>
+    <input type="text" class="form-control" placeholder="Cod." readonly>
+  </div>
+  <!-- Descrição -->
+  <div class="">
+    <label>Descrição</label><br>
+    <input type="text" class="form-control" placeholder="Descrição">
+  </div>
+  <!-- Unidade de Medida -->
+  <div class="">
+    <label>Unidade de Medida</label>
+    <input id='UM' list="UMDatalist" class="form-control">
+    <datalist id='produtosDatalist'>
+    </datalist>
   </div>
 
-  <!-- Normal content  -->
+  <!-- Grupo -->
+  <div class="">
+    <label>Grupo</label><br>
+    <input id='DOIS' list="DOISDatalist" class="form-control">
+    <datalist id='gruposDatalist'>
+    </datalist>
+  </div>
 
-  </body>
-  </html>
+  <!-- Grupo -->
+  <div class="">
+    <label>Cont.</label><br>
+    <input id='TRES' list="TRESDatalist" class="form-control">
+    <datalist id='contDatalist'>
+    </datalist>
+  </div>
+
+  <!-- Salvar Cadastro -->
+  <br>
+    <button type="button" name="button" placeholder="SalvarCadastro" style="padding-right: : 50%" > Salvar Cadastro! </button>
+</div>
+
+</body>
+</html>
