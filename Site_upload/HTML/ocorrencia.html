@@ -20,7 +20,7 @@
   background: #ECECEC;
   background-color: #111;
   z-index: 2;">
-  <img src="../../Images/unimed_cascavel.png" alt="">
+  <a href='home.html'><img src="../../Images/unimed_cascavel.png" alt=""></a>
   <a class="navbar-brand" style="font-size=80px;">UNIBUY</a>
   <form class="form-inline">
     <p>User ID</p>
@@ -33,8 +33,8 @@
   <a href="acompanhar.html">Acompanhar pedido</a>
   <a href="cadastro.html">Cadastro de produtos</a>
   <a href="ocorrencia.html">Ocorrências</a>
+  <a href="cotacao.html">Cotações</a>
 </div>
-
 
 
 <!-- Normal content  -->
@@ -49,13 +49,8 @@
   <div class="col-lg-6" style="left: 1%">
 
     <form role="form" action="">
-      <fieldset>
+      <fieldset disabled>
         <div class="form-group">
-          <select>
-            <option>Produto 1</option>
-            <option>Produto 2</option>
-            <option>Produto 3</option>
-          </select><br><br>
           <label for="disabledSelect">Numero Pedido</label>
           <input class="form-control" id="disabledInput" type="text" placeholder="dado BD" disabled>
           <label for="disabledSelect">Data</label>
@@ -76,44 +71,21 @@
 
         <div class="form-group">
           <label>Fornecedores</label>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 1
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 2
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Opção 3
-            </label>
-          </div>
+          <input id='produtos' list="produtosDatalist" class="form-control" onchange="getProductId();" required=" ">
+          <datalist id='produtosDatalist' >
+          </datalist>
         </div>
 
         <br>
         <div class="form-group">
-          <label>Gerentes</label>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Gerente
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Superintendente
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="">Diretor
-            </label>
-          </div>
+          <select class="form-group">
+            <option>Gerente</option>
+            <option>Super intendente</option>
+            <option>Gerente</option>
+          </select>
         </div>
 
-        <button type="button" name="button" onclick="sendTo()">Enviar</button><script type="text/javascript"></script>
+        <button type="button" name="button" onclick="funcao()">Enviar</button>
       </div>
       <footer>
       </footer>
